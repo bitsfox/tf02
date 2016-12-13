@@ -7,6 +7,7 @@
 #define ctmp4	"/sys/class/hwmon/hwmon2/temp3_input"
 #define vtmp1	"/sys/class/hwmon/hwmon0/temp1_input"
 #define vtmp2	"/sys/class/hwmon/hwmon0/temp2_input"
+#define vtmp3	"/sys/class/hwmon/hwmon0/temp3_input"
 //for thinkpad
 #define bat1	"/sys/class/power_supply/BAT1/energy_now"
 #define bat2	"/sys/class/power_supply/BAT1/energy_full"

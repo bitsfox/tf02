@@ -120,9 +120,9 @@ int get_thk(int i)
 		return 0;
 	memset(str,0,sizeof(str));
 	len=read(f,str,sizeof(str));
+	close(f);
 	if(len<=0)
 		return 0;
-	close(f);
 	f=atoi(str);f/=1000;
 	if(i<4)
 		printf("%d℃ \n",f);
@@ -133,6 +133,39 @@ int get_thk(int i)
 //{{{int get_dell(int i)
 int get_dell(int i)
 {
+	int f,len;
+	memset(str,0,sizeof(str));
+	switch(i)
+	{
+	case 0://core temp1
+		memcpy(str,vtmp2,strlen(vtmp2));
+		break;
+	case 1://core temp2
+		memcpy(str,vtmp3,strlen(vtmp3));
+		break;
+	case 2://nouveau
+		memcpy(str,ctmp1,strlen(ctmp1));
+		break;
+	case 3://invalid
+		printf("acpitz temp2 invalid\n");
+		return 0;
+	case 4://fan invalid
+		printf("fan invalid\n");
+		return 0;
+	case 5://battery
+		printf("battery invalid\n");
+		return;
+	};
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);f/=1000;
+	printf("%d℃ \n",f);
 	return 0;
 }//}}}
 //{{{int get_office(int i)
