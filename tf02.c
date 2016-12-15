@@ -99,18 +99,18 @@ int get_thk(int i)
 			return 0;
 		memset(s1,0,sizeof(s1));
 		len=read(f,s1,sizeof(s1));
+		close(f);
 		if(len<=0)
 			return 0;
-		close(f);
 		ft=atof(s1);
 		f=open(bat2,O_RDONLY);
 		if(f<=0)
 			return 0;
 		memset(s1,0,sizeof(s1));
 		len=read(f,s1,sizeof(s1));
+		close(f);
 		if(len<=0)
 			return 0;
-		close(f);
 		ft1=atof(s1);
 		printf("%2.0f%%\n",(ft/ft1)*100);
 		return 0;
@@ -154,7 +154,7 @@ int get_dell(int i)
 		return 0;
 	case 5://battery
 		printf("battery invalid\n");
-		return;
+		return 0;
 	};
 	f=open(str,O_RDONLY);
 	if(f<=0)
@@ -171,6 +171,58 @@ int get_dell(int i)
 //{{{int get_office(int i)
 int get_office(int i)
 {
+	int f,len;
+	float ft,ft1;
+	memset(str,0,sizeof(str));
+	switch(i)
+	{
+	case 0://core temp1
+		memcpy(str,ctmp1,strlen(ctmp1));
+		break;
+	case 1://core temp2
+		memcpy(str,ctmp2,strlen(ctmp2));
+		break;
+	case 2://acpitz
+		memcpy(str,vtmp1,strlen(vtmp1));
+		break;
+	case 3://acpitz
+		memcpy(str,vtmp2,strlen(vtmp2));
+		break;
+	case 4://fan invalid
+		printf("fan invalid\n");
+		return 0;
+	case 5://battery
+		f=open(bat3,O_RDONLY);
+		if(f<=0)
+			return 0;
+		memset(s1,0,sizeof(s1));
+		len=read(f,s1,sizeof(s1));
+		close(f);
+		if(len<=0)
+			return 0;
+		ft=atof(s1);
+		f=open(bat4,O_RDONLY);
+		if(f<=0)
+			return 0;
+		memset(s1,0,sizeof(s1));
+		len=read(f,s1,sizeof(s1));
+		close(f);
+		if(len<=0)
+			return 0;
+		ft1=atof(s1);
+		printf("%2.0f%%\n",(ft/ft1)*100);
+		return 0;
+	};
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);f/=1000;
+	printf("%d℃ \n",f);
 	return 0;
 }//}}}
 

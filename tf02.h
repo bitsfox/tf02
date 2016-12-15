@@ -11,9 +11,13 @@
 //for thinkpad
 #define bat1	"/sys/class/power_supply/BAT1/energy_now"
 #define bat2	"/sys/class/power_supply/BAT1/energy_full"
+//for office pad
+#define bat3	"/sys/class/power_supply/BAT0/energy_now"
+#define bat4	"/sys/class/power_supply/BAT0/energy_full"
 //fan的目录各有不同
 #define thk_fan	"/sys/devices/platform/thinkpad_hwmon/fan1_input"
 #define dell_fan "/sys/devices/virtual/hwmon/hwmon0/fan1_input"
+//only for debian testing, not for debian 8 stable
 #define off_fan "/sys/devices/virtual/hwmon/hwmon0/fan1_input"
 //dmidecode
 #define dmi_cmd	"dmidecode -t 1|grep Version > /tmp/CVTMPPPADSXXX0927.txt"
