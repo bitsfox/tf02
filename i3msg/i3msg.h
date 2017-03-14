@@ -25,7 +25,7 @@
 #define wfile			"/tmp/wthdata.dat"
 #define mailfile		"/tmp/checkmail_00123"
 //信息显示的格式
-#define	 out_msg	"%s | CPU:%s%s| 内存:%s %s| 流量 %s%s| 电量:%s|显卡:%s| 泰安 %s %s | %s\n"  //2013-4-21添加天气 2014-4-2添加邮件检查
+#define	 out_msg	"%s | CPU:%s%s| 内存:%s %s| 流量 %s%s| 电量:%s| 显卡:%s| 泰安 %s %s | %s\n"  //2013-4-21添加天气 2014-4-2添加邮件检查
 //macro define
 #define  zero(A)	memset(A,0,sizeof(A))
 #define  sys_log(a,b)	openlog(a,LOG_PID,LOG_USER);syslog(LOG_NOTICE,b);closelog();

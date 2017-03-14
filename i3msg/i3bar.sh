@@ -25,7 +25,7 @@ myvar=100
 while :;
 do
 	let "myvar += 1"
-	if [ $myvar -gt 20 ];then
+	if [ $myvar -gt 60 ];then
 		let "myvar = 0"
 		check_mail
 	fi
