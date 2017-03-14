@@ -22,7 +22,7 @@ int main(int argc,char** argv)
 	exit(0);
 }//}}}
 //{{{ int chg_daemon()
-int chg_daemon()
+/*int chg_daemon()
 {
 	int i,pid;
 	pid=fork();
@@ -34,18 +34,20 @@ int chg_daemon()
 	pid=fork();
 	if(pid!=0)
 		return 1;
-	chdir("/");/*
+	chdir("/");
 	for(i=0;i<64;i++)
 		close(i);
 	open("/dev/null",O_RDONLY);
 	open("/dev/null",O_RDWR);
-	open("/dev/null",O_RDWR);*/
+	open("/dev/null",O_RDWR);
 	return 0;
-}//}}}
+}*/
+//}}}
 //{{{ void get_config()
 void get_config()
 {
 	int i;
+/*	
 //初始化所有指针，句柄，描述字
 	tj[0].n=3601; //0为天气的资料获取索引，轮寻时间为3600秒、1小时
 	tj[1].n=15;  //1为电池电量的获取索引，轮寻时间为20秒
@@ -53,6 +55,7 @@ void get_config()
 	tj[3].n=3; //3为内存使用索引,轮寻时间6秒
 	tj[4].n=4; //4为网络信息索引，论寻时间8秒
 	tj[5].n=4; //5为cpu温度的索引，轮询时间8秒
+	*/
 	for(i=0;i<4;i++)
 		cpu_v[i]=0;
 	net_ud[0]=0;net_ud[1]=0;
@@ -108,7 +111,7 @@ int disp_msg()
 	l=p->tm_mon+1;
 	snprintf(ch,sizeof(ch),"%d年%d月%d日 %d时%d分",y,l,j,i,p->tm_min);
 	memset(fmt,0,chlen);//memset(msg[2],0,sizeof(msg[2]));
-	snprintf(fmt,chlen,out_msg,msg[10],msg[9],msg[2],msg[5],msg[8],msg[4],msg[3],msg[6],msg[7],msg[1],msg[0],ch);
+	snprintf(fmt,chlen,out_msg,msg[10],msg[5],msg[8],msg[4],msg[3],msg[6],msg[7],msg[9],msg[2],msg[1],msg[0],ch);
 	printf(fmt);
 	return 0;
 }//}}}
