@@ -1,0 +1,16 @@
+this is for office pad's i3msg
+
+		tybitsfox 2014-8-12
+当在bios设置中禁用NVIDIA的独立显卡时，该程序获取显卡温度的代码将失效，同时，在本机，集成显卡无法获取显卡信息
+所以，想要该程序在本机能正常的获取显卡信息就必须启用独立显卡。
+		tybitsfox 2015-7-22
+/////////////////////debian 8.0 新设置////////////////////
+cpu 使用率：	/proc/stat
+cpu 温  度：	/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+显卡温  度：	/sys/devices/virtual/thermal/thermal_zone0/temp
+内存使用率：	/proc/meminfo
+网络流量  ：	/proc/net/dev
+电源信息  ：	/sys/class/power_supply/BAT0/uevent
+/////////////////////////////////////////////////////////
+		2017-3-14 准备也将i3msg整合一下，以适应我三台不同的机器
+		
