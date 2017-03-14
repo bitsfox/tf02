@@ -123,6 +123,9 @@ void get_batt()//battery get
     int k,l;
     char *c,ch[512];
 	memset(msg[9],0,100);
+#if (MCH_ID == 2)
+	snprintf(msg[9],100,"100%%");
+#else	
     f=fopen(sfile,"r");
     if(f==NULL)
     {
@@ -159,8 +162,8 @@ lop1:
 	else
    		 ft=(float)j/i;
     snprintf(msg[9],100,"%2.0f%% ",ft*100);
+#endif
     return ;
-
 }//}}}
 //{{{ void get_cpu()
 void get_cpu()

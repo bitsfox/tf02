@@ -16,7 +16,7 @@
   =2				dell
   =3				office pad
  */
-#define MCH_ID			1
+#define MCH_ID			2
 //通用的定义
 #define	 jc			6
 #define  chlen		1024
@@ -31,7 +31,7 @@
 #define  sys_log(a,b)	openlog(a,LOG_PID,LOG_USER);syslog(LOG_NOTICE,b);closelog();
 
 
-//thinkpad
+////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
@@ -49,7 +49,7 @@
 //video card temp
 #define video_temp	"/sys/class/hwmon/hwmon0/temp1_input"
 #endif
-//office pad
+/////////////////////////////////office pad//////////////////////////////////////
 #if (MCH_ID == 3) 
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT0/uevent"
@@ -65,6 +65,21 @@
 #define cpu_temp "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
 //video card temp
 #define video_temp "/sys/devices/virtual/thermal/thermal_zone0/temp"
+#endif
+/////////////////////////////////dell/////////////////////////////////////////////
+#if (MCH_ID == 2)
+//电池电量获取所需
+#define sfile   ""
+//CPU
+#define cpu_file	"/proc/stat"
+//memory
+#define mem_file	"/proc/meminfo"
+//net
+#define net_updown	"/proc/net/dev"
+//cpu temperature
+#define cpu_temp	"/sys/class/hwmon/hwmon0/temp2_input"
+#define video_temp	"/sys/class/hwmon/hwmon1/temp1_input"
+
 #endif
 
 //define var
