@@ -18,7 +18,6 @@
  */
 #define MCH_ID			2
 //通用的定义
-#define	 jc			6
 #define  chlen		1024
 #define  mem_len	256
 #define weather			"/root/.conky/weather"
@@ -33,6 +32,7 @@
 
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
+#define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
 #define power_base  "POWER_SUPPLY_ENERGY_FULL="
@@ -51,6 +51,7 @@
 #endif
 /////////////////////////////////office pad//////////////////////////////////////
 #if (MCH_ID == 3) 
+#define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT0/uevent"
 #define power_base  "POWER_SUPPLY_ENERGY_FULL="
@@ -68,6 +69,7 @@
 #endif
 /////////////////////////////////dell/////////////////////////////////////////////
 #if (MCH_ID == 2)
+#define	 jc			4
 //电池电量获取所需
 #define sfile   ""
 //CPU

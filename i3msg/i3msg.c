@@ -8,7 +8,7 @@
 int main(int argc,char** argv)
 {
 	char* av[]={weather,0};
-	int i,j,job[jc];
+	int i,j;
 	static int k=0;
 	get_config();
 	format_msg(0);//初次运行时获取天气
@@ -124,7 +124,7 @@ void get_batt()//battery get
     char *c,ch[512];
 	memset(msg[9],0,100);
 #if (MCH_ID == 2)
-	snprintf(msg[9],100,"100%%");
+	snprintf(msg[9],100,"100%% ");
 #else	
     f=fopen(sfile,"r");
     if(f==NULL)
@@ -349,7 +349,7 @@ void get_net()
 		snprintf(msg[7],100,"00");
 		return ;
 	}
-	for(i=0;i<5;i++)
+	for(i=0;i<jc;i++)
 	{
 		memset(ch,0,300);
 		fgets(ch,300,file);
@@ -407,7 +407,7 @@ void get_net()
 		snprintf(msg[7],100,"00");
 		return ;
 	}
-	for(i=0;i<5;i++)
+	for(i=0;i<jc;i++)
 	{
 		memset(ch,0,300);
 		fgets(ch,300,file);
