@@ -13,7 +13,7 @@ then
 else
 	a1=""
 fi	
-n2=`grep -n "From fetchmail" /var/mail/tybitsfox163 | wc -l`
+n1=`grep -n "From fetchmail" /var/mail/tybitsfox163 | wc -l`
 n2=`grep -n "Status: " /var/mail/tybitsfox163 | wc -l`
 if [ $n1 -gt $n2 ]
 then
