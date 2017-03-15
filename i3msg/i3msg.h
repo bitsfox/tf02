@@ -3,7 +3,7 @@
   这次将采用#if设置，直接在编译阶段分别编译各自机器的源代码
   抛弃了conky上取得信息的做法，即每次运行时通过取得dmi信息来确定
   执行的代码段。
-
+  注：目前的设置是以debian 8 stable 为基础的。
 
   	tybitsfox
  */
@@ -16,7 +16,7 @@
   =2				dell
   =3				office pad
  */
-#define MCH_ID			2
+#define MCH_ID			3
 //通用的定义
 #define  chlen		1024
 #define  mem_len	256
@@ -32,6 +32,7 @@
 
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
+//下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4
 #define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
