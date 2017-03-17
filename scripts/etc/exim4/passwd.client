@@ -1,0 +1,11 @@
+# password file used when the local exim is authenticating to a remote
+# host as a client.
+#
+# see exim4_passwd_client(5) for more documentation
+#
+# Example:
+### target.mail.server.example:login:password
+#smtp.189.cn:13325288100@189.cn:asdf1234
+#smtp-189.cdn.21cn.com:13325288100@189.cn:asdf1234
+#smtp.163.com:tyyyyt@163.com:lkjh1234
+smtp.126.com:bitsfox@126.com:hjkl&1234AZ

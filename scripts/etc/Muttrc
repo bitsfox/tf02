@@ -1,0 +1,18 @@
+ignore *
+unignore From Subject Date
+set editor='vim'
+set sendmail='/usr/sbin/exim4'
+set folder="/var/mail/"
+set mbox="/var/mail/inbox"
+set spoolfile="/var/mail/inbox"
+set record="/var/mail/sent"
+mailboxes "+inbox"
+mailboxes "+tyyyyt"
+mailboxes "+13325288100"
+mailboxes "+tybitsfox126"
+set charset="utf8"
+set locale="zh_CN"
+set from=bitsfox@126.com
+set use_from=yes
+set envelope_from=yes
+

@@ -28,8 +28,16 @@
 //macro define
 #define  zero(A)	memset(A,0,sizeof(A))
 #define  sys_log(a,b)	openlog(a,LOG_PID,LOG_USER);syslog(LOG_NOTICE,b);closelog();
-
-
+//用于邮件检查的定义
+#define fetchmail	"From fetchmail"
+#define status		"Status: "
+#define tyyyyt		"/var/mail/tyyyyt"
+#define tfox163		"/var/mail/tybitsfox163"
+#define tfox126		"/var/mail/tybitsfox126"
+#define fox126		"/var/mail/bitsfox126"
+#define phone		"/var/mail/13325288100"
+#define wait_tm		5
+//{{{根据不同的机器，分别进行编译
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
 //下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4
@@ -84,7 +92,7 @@
 #define video_temp	"/sys/class/hwmon/hwmon1/temp1_input"
 
 #endif
-
+//}}}
 //define var
 char msg[11][100];
 char fmt[chlen];
@@ -99,6 +107,6 @@ void get_mem();//mem status
 void get_net();//net up/down
 void get_temp();//cpu temperature
 void get_mailchk();//2014-4-2 add mailcheck
-
+void check_mail();//2017-3-17 该函数替代原来的check_mail脚本
 
 

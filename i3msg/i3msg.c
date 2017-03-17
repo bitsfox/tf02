@@ -7,9 +7,7 @@
 //{{{ int main(int argc,char** argv)
 int main(int argc,char** argv)
 {
-	char* av[]={weather,0};
-	int i,j;
-	static int k=0;
+	sleep(wait_tm);
 	get_config();
 	format_msg(0);//初次运行时获取天气
 	get_batt();// 初次运行时获取电量
@@ -18,6 +16,7 @@ int main(int argc,char** argv)
 	get_net();//net
 	get_temp();//temperature
 	get_mailchk();//2014-4-2添加，邮件检查的显示。
+	check_mail();//2017-3-17添加，替代了check_mail脚本
 	disp_msg();
 	exit(0);
 }//}}}
@@ -518,7 +517,133 @@ void get_mailchk()
 	return;
 };
 //}}}
-
+//{{{void check_mail()
+void check_mail()
+{
+	time_t tme;
+	struct tm *t;
+	int i,j;
+	FILE *file;
+	char buf[chlen];
+	zero(buf);
+	time(&tme);
+	t=gmtime(&tme);
+	i=t->tm_min;
+	j=t->tm_sec;
+	if((i%10) !=0)
+		return;
+	if(j>(wait_tm+2))
+		return;
+//tyyyyt邮箱
+	file=fopen(tyyyyt,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"yy邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	file=fopen(tfox163,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"163邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	file=fopen(tfox126,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"t126邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	file=fopen(fox126,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"126邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	file=fopen(phone,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"手机邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	snprintf(buf,chlen,"没有新邮件\n");
+cm_end:
+	file=fopen(mailfile,"w+");
+	if(file==NULL)
+		return;
+	fputs(buf,file);
+	fclose(file);
+}
+//}}}
 
 
 

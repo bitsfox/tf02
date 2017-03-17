@@ -1,0 +1,39 @@
+#! /bin/bash
+#2017-3-15 原来的格式已经不能使用了： X-Status,改为新格式
+#n1=`grep -n "Status: " /var/mail/13325288100 | wc -l`
+#n2=`grep -n "Subject: " /var/mail/13325288100 | wc -l`
+#n3=`grep -n "X-Status: " /var/mail/13325288100 | wc -l`
+#n4=$((n1-n3))
+n1=`grep -n "^From fetchmail" /var/mail/13325288100 | wc -l`
+n2=`grep -n "^Status: " /var/mail/13325288100 | wc -l`
+if [ $n1 -gt $n2 ]
+then
+	a1=1
+	msg="手机邮箱"
+else
+	a1=""
+fi	
+n1=`grep -n "^From fetchmail" /var/mail/tybitsfox163 | wc -l`
+n2=`grep -n "^Status: " /var/mail/tybitsfox163 | wc -l`
+if [ $n1 -gt $n2 ]
+then
+	a2=1
+	msg="163邮箱"
+else
+	a2=""
+fi	
+n1=`grep -n "^From fetchmail" /var/mail/tyyyyt | wc -l`
+n2=`grep -n "^Status: " /var/mail/tyyyyt | wc -l`
+if [ $n1 -gt $n2 ]
+then
+	a3=1
+	msg="yy邮箱"
+else
+	a3=""
+fi	
+if [ "$a1" -o "$a2" -o "$a3" ]
+then
+	echo "$msg   你有新邮件了~~" > /tmp/checkmail_00123
+else
+	echo "没有新邮件" > /tmp/checkmail_00123
+fi	
