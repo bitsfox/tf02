@@ -7,12 +7,18 @@ set mbox="/var/mail/inbox"
 set spoolfile="/var/mail/inbox"
 set record="/var/mail/sent"
 mailboxes "+inbox"
+mailboxes "+tybitsfox163"
 mailboxes "+tyyyyt"
-mailboxes "+13325288100"
 mailboxes "+tybitsfox126"
+mailboxes "+13325288100"
+mailboxes "+bitsfox126"
 set charset="utf8"
 set locale="zh_CN"
+#设置发信
+#set from=tybitsfox@21cn.com
+#set from=tybitsfox@tom.com
 set from=bitsfox@126.com
+#set from=tybitsfox@gmail.com
 set use_from=yes
 set envelope_from=yes
 

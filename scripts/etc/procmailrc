@@ -1,15 +1,15 @@
 PATH=/bin:/usr/bin:/usr/local/bin
-MAILDIR="/var/mail"                 #指定邮件目录
-LOGFILE="/var/log/procmail.log"    
-FORMAIL=/usr/bin/formail                #指定格式化程序
+MAILDIR="/var/mail"					#指定邮件目录
+LOGFILE="/var/log/procmail.log"			
+FORMAIL=/usr/bin/formail				#指定格式化程序
 VERBOSE=off
 
 :0
-* ^To.*100@189.cn
-13325288100
+* ^To.*fox@163.com
+tybitsfox163
 
 :0
-* ^To.*fox@126.com
+* ^To.tybitsfox@126.com
 tybitsfox126
 
 :0
@@ -17,5 +17,14 @@ tybitsfox126
 tyyyyt
 
 :0
+* ^To.bitsfox@126.com
+bitsfox126
+
+:0
+* ^To.8100@189.cn
+13325288100
+
+:0
 *.*
 inbox
+
