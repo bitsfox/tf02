@@ -9,12 +9,20 @@ VERBOSE=off
 13325288100
 
 :0
-* ^To.*fox@126.com
+* ^To.*[y]bitsfox@126.com
 tybitsfox126
+
+:0
+* ^To.*[^y]bitsfox@126.com
+bitsfox126
 
 :0
 * ^To.*yyt@163.com
 tyyyyt
+
+:0
+* ^To.*fox@163.com
+tybitsfox163
 
 :0
 *.*
