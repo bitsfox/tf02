@@ -41,7 +41,7 @@
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
 //下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4
-#define	 jc			5
+#define	 jc			3
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
 #define power_base  "POWER_SUPPLY_ENERGY_FULL="
