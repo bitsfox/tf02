@@ -25,6 +25,14 @@ tyyyyt
 13325288100
 
 :0
+* ^To.*[y]bitsfox@sina.com
+tybitsfoxsina
+
+:0
+* ^To.*[^y]bitsfox@sina.com
+bitsfoxsina
+
+:0
 *.*
 inbox
 

@@ -635,6 +635,46 @@ void check_mail()
 		}
 	}
 	zero(buf);
+	file=fopen(tfoxsina,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"新浪t邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
+	file=fopen(foxsina,"r");
+	if(file != NULL)
+	{
+		i=0;j=0;
+		while(fgets(buf,chlen,file))
+		{
+			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+				i++;
+			if(memcmp(buf,status,strlen(status))==0)
+				j++;
+		}
+		fclose(file);
+		if(i>j) //有未读邮件
+		{
+			zero(buf);
+			snprintf(buf,chlen,"新浪邮箱有新邮件\n");
+			goto cm_end;
+		}
+	}
+	zero(buf);
 	snprintf(buf,chlen,"没有新邮件\n");
 cm_end:
 	file=fopen(mailfile,"w+");

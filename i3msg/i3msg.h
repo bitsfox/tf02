@@ -36,11 +36,13 @@
 #define tfox126		"/var/mail/tybitsfox126"
 #define fox126		"/var/mail/bitsfox126"
 #define phone		"/var/mail/13325288100"
+#define tfoxsina	"/var/mail/tybitsfoxsina"
+#define foxsina		"/var/mail/bitsfoxsina"
 #define wait_tm		5
 //{{{根据不同的机器，分别进行编译
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
-//下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4
+//下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4,只有wlan0时设置为3
 #define	 jc			3
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
