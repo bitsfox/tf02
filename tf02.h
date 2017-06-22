@@ -5,6 +5,8 @@
 #define ctmp2	"/sys/class/hwmon/hwmon1/temp2_input"
 #define ctmp3	"/sys/class/hwmon/hwmon2/temp2_input"
 #define ctmp4	"/sys/class/hwmon/hwmon2/temp3_input"
+#define ctmp5	"/sys/class/hwmon/hwmon2/temp1_input"
+#define ctmp6	"/sys/class/hwmon/hwmon1/temp3_input"
 #define vtmp1	"/sys/class/hwmon/hwmon0/temp1_input"
 #define vtmp2	"/sys/class/hwmon/hwmon0/temp2_input"
 #define vtmp3	"/sys/class/hwmon/hwmon0/temp3_input"
@@ -27,8 +29,13 @@
 #define danwei	"Lenovo B470"
 #define dell	"00"
 #define thinkpad	"ThinkPad SL410"
+#define ffmt	"${color green}CPU0温度 $alignr %d℃  $color\n$stippled_hr\n${color green}CPU1温度 $alignr %d℃  $color\n$stippled_hr\n${color green}显卡温度 $alignr %d℃  $color\n$stippled_hr\n${color green}风扇转速 $alignr %d转/秒 $color\n$stippled_hr\n"
+#define ffmt1	"CPU0温度%s%d℃ \n%s\nCPU1温度%s%d℃ \n%s\n显卡温度%s%d℃ \n%s\n风扇转速%s%d转/秒\n%s\n"
+#define septors		"-------------------------------------------------"
+#define nullchar1	"                                    "
+#define nullchar2	"                                 "
 char str[256],s1[64];
-
+char destr[4096];
 
 
 

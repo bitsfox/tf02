@@ -3,6 +3,8 @@ int parse_dmi();
 int get_office(int i);
 int get_dell(int i);
 int get_thk(int i);
+int get_della(int i);
+int get_dellb(int i);
 //{{{int main(int argc,char **argv)
 int main(int argc,char **argv)
 {
@@ -32,7 +34,8 @@ int main(int argc,char **argv)
 	}
 	if(memcmp(s1,dell,strlen(dell))==0)
 	{
-		get_dell(j);
+		//get_dell(j);
+		get_dellb(j);
 		return 0;
 	}
 	if(memcmp(s1,thinkpad,strlen(thinkpad))==0)
@@ -138,20 +141,21 @@ int get_dell(int i)
 	switch(i)
 	{
 	case 0://core temp1
-		memcpy(str,vtmp2,strlen(vtmp2));
+		memcpy(str,ctmp6,strlen(ctmp6));
 		break;
 	case 1://core temp2
-		memcpy(str,vtmp3,strlen(vtmp3));
+		memcpy(str,ctmp2,strlen(ctmp2));
 		break;
 	case 2://nouveau
-		memcpy(str,ctmp1,strlen(ctmp1));
+		memcpy(str,ctmp5,strlen(ctmp5));
 		break;
 	case 3://invalid
 		printf("acpitz temp2 invalid\n");
 		return 0;
 	case 4://fan invalid
-		printf("fan invalid\n");
-		return 0;
+		memcpy(str,dell_fan,strlen(dell_fan));
+	//	printf("fan invalid\n");
+		break;
 	case 5://battery
 		printf("battery invalid\n");
 		return 0;
@@ -164,8 +168,11 @@ int get_dell(int i)
 	close(f);
 	if(len<=0)
 		return 0;
-	f=atoi(str);f/=1000;
-	printf("%d℃ \n",f);
+	f=atoi(str);//f/=1000;
+	if(i==4)
+		printf("%d转/秒\n",f);
+	else
+		printf("%d℃ \n",f/1000);
 	return 0;
 }//}}}
 //{{{int get_office(int i)
@@ -225,8 +232,99 @@ int get_office(int i)
 	printf("%d℃ \n",f);
 	return 0;
 }//}}}
-
-
+//{{{int get_della(int i)
+int get_della(int i)
+{
+	int f,len;
+	int b[4];
+	memset(str,0,sizeof(str));
+	//core temp1
+	memcpy(str,ctmp6,strlen(ctmp6));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[0]=f/1000;
+	memset(str,0,sizeof(str));
+	//core temp2
+	memcpy(str,ctmp2,strlen(ctmp2));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[1]=f/1000;
+	memset(str,0,sizeof(str));
+	//nouveau
+	memcpy(str,ctmp5,strlen(ctmp5));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[2]=f/1000;
+	memset(str,0,sizeof(str));
+	//fan of processor
+	memcpy(str,dell_fan,strlen(dell_fan));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[3]=f;
+	memset(destr,0,sizeof(destr));
+	snprintf(destr,sizeof(destr),ffmt1,nullchar1,b[0],septors,nullchar1,b[1],septors,nullchar1,b[2],septors,nullchar2,b[3],septors);
+	//snprintf(destr,sizeof(destr),ffmt,b[0],b[1],b[2],b[3]);
+	printf(destr);
+	return 0;
+}//}}}
+//{{{int get_dellb(int i)
+int get_dellb(int i)
+{
+	int f,len;
+	int b[2];
+	memset(str,0,sizeof(str));
+	//core temp1
+	memcpy(str,ctmp6,strlen(ctmp6));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[0]=f/1000;
+	memset(str,0,sizeof(str));
+	//nouveau temp
+	memcpy(str,ctmp5,strlen(ctmp5));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[1]=f/1000;
+	memset(str,0,sizeof(str));
+	snprintf(str,sizeof(str),"cup温度：%d℃       显卡温度：%d℃ ",b[0],b[1]);
+	printf(str);
+	return 0;
+}//}}}
 
 
 
