@@ -177,16 +177,16 @@ int get_office(int i)
 	switch(i)
 	{
 	case 0://core temp1
-		memcpy(str,ctmp1,strlen(ctmp1));
+		memcpy(str,ctmp3,strlen(ctmp3));
 		break;
 	case 1://core temp2
-		memcpy(str,ctmp2,strlen(ctmp2));
+		memcpy(str,ctmp4,strlen(ctmp4));
 		break;
 	case 2://acpitz
-		memcpy(str,vtmp1,strlen(vtmp1));
+		memcpy(str,vtmp1,strlen(ctmp1));
 		break;
 	case 3://acpitz
-		memcpy(str,vtmp2,strlen(vtmp2));
+		memcpy(str,vtmp2,strlen(ctmp2));
 		break;
 	case 4://fan invalid
 		printf("fan invalid\n");
