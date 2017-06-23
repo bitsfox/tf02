@@ -1,6 +1,8 @@
 #include"clsscr.h"
 
-
+#define core_temp1 "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+#define vcad_temp1 "/sys/devices/virtual/hwmon/hwmon0/temp1_input"
+//--------------------------------------------------
 #define ctmp1	"/sys/class/hwmon/hwmon1/temp1_input"
 #define ctmp2	"/sys/class/hwmon/hwmon1/temp2_input"
 #define ctmp3	"/sys/class/hwmon/hwmon2/temp2_input"
