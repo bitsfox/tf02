@@ -217,6 +217,45 @@ int get_office()
 //{{{int get_thk()
 int get_thk()
 {
+	int f,len;
+	int b[2];
+	memset(str,0,sizeof(str));
+	snprintf(str,sizeof(str),"%s%s",temp1,ttemp1);
+	f=open(str,O_RDONLY);
+	if(f<=0)
+	{
+		printf("error 01");
+		return 0;
+	}
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+	{
+		printf("error 02");
+		return 0;
+	}
+	f=atoi(str);b[1]=f/1000;//acpi
+	memset(str,0,sizeof(str));
+	snprintf(str,sizeof(str),"%s%s",temp3,ttemp2);
+	f=open(str,O_RDONLY);
+	if(f<=0)
+	{
+		printf("error 11");
+		return 0;
+	}
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+	{
+		printf("error 12");
+		return 0;
+	}
+	f=atoi(str);b[0]=f/1000;//core
+	memset(str,0,sizeof(str));
+	snprintf(str,sizeof(str),"cpu温度：%d℃       显卡温度：%d℃ ",b[0],b[1]);
+	printf(str);
 	return 0;
 }
 //}}}
