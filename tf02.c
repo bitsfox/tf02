@@ -5,6 +5,7 @@ int get_dell(int i);
 int get_thk(int i);
 int get_della(int i);
 int get_dellb(int i);
+int get_officea(int i);
 //{{{int main(int argc,char **argv)
 int main(int argc,char **argv)
 {
@@ -27,9 +28,8 @@ int main(int argc,char **argv)
 		return 0;
 	if(memcmp(s1,danwei,strlen(danwei))==0)
 	{
-//		printf(s1);
-//		printf("\n");
-		get_office(j);
+//		get_office(j);
+		get_officea(j);
 		return 0;
 	}
 	if(memcmp(s1,dell,strlen(dell))==0)
@@ -184,16 +184,16 @@ int get_office(int i)
 	switch(i)
 	{
 	case 0://core temp1
-		memcpy(str,ctmp1,strlen(ctmp1));
+		memcpy(str,ctmp3,strlen(ctmp3));
 		break;
 	case 1://core temp2
-		memcpy(str,ctmp2,strlen(ctmp2));
+		memcpy(str,ctmp4,strlen(ctmp4));
 		break;
 	case 2://acpitz
-		memcpy(str,vtmp1,strlen(vtmp1));
+		memcpy(str,vtmp1,strlen(ctmp1));
 		break;
 	case 3://acpitz
-		memcpy(str,vtmp2,strlen(vtmp2));
+		memcpy(str,vtmp2,strlen(ctmp2));
 		break;
 	case 4://fan invalid
 		printf("fan invalid\n");
@@ -325,7 +325,40 @@ int get_dellb(int i)
 	printf(str);
 	return 0;
 }//}}}
-
+//{{{int get_officea(int i)
+int get_officea(int i)
+{
+	int len,f;
+	int b[2];
+	memset(str,0,sizeof(str));
+	//core temp1
+	memcpy(str,core_temp1,strlen(core_temp1));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[0]=f/1000;
+	memset(str,0,sizeof(str));
+	//acpitz temp1
+	memcpy(str,vcad_temp1,strlen(vcad_temp1));
+	f=open(str,O_RDONLY);
+	if(f<=0)
+		return 0;
+	memset(str,0,sizeof(str));
+	len=read(f,str,sizeof(str));
+	close(f);
+	if(len<=0)
+		return 0;
+	f=atoi(str);b[1]=f/1000;
+	memset(str,0,sizeof(str));
+	snprintf(str,sizeof(str),"cup温度：%d℃       显卡温度：%d℃ ",b[0],b[1]);
+	printf(str);
+	return 0;
+}//}}}
 
 
 

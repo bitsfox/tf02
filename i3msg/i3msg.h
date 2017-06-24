@@ -16,7 +16,7 @@
   =2				dell
   =3				office pad
  */
-#define MCH_ID			1
+#define MCH_ID			3
 //通用的定义
 #define  chlen		1024
 #define  mem_len	256
