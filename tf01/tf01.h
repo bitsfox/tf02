@@ -1,8 +1,8 @@
 #include"clsscr.h"
 
 //#define mtype		"lenvo"
-//#define mtype		"thkpad"
-#define mtype		"dell"
+#define mtype		"thkpad"
+//#define mtype		"dell"
 
 #define temp1		"/sys/class/hwmon/hwmon0/"
 #define temp2		"/sys/class/hwmon/hwmon1/"

@@ -16,7 +16,7 @@
   =2				dell
   =3				office pad
  */
-#define MCH_ID			3
+#define MCH_ID			1
 //通用的定义
 #define  chlen		1024
 #define  mem_len	256
@@ -30,7 +30,7 @@
 #define  sys_log(a,b)	openlog(a,LOG_PID,LOG_USER);syslog(LOG_NOTICE,b);closelog();
 //用于邮件检查的定义
 #define fetchmail	"From fetchmail"
-#define status		"Status: "
+#define status		"Status: R"
 #define tyyyyt		"/var/mail/tyyyyt"
 #define tfox163		"/var/mail/tybitsfox163"
 #define tfox126		"/var/mail/tybitsfox126"
@@ -43,7 +43,9 @@
 ////////////////////////////////thinkpad/////////////////////////////////////////
 #if (MCH_ID == 1) 
 //下面这个定义是用来获取网络流量数据的，有wlan0的应设置为5,只有eth0的设为4,只有wlan0时设置为3
-#define	 jc			3
+//2017-7-29 debian9下不再使用固定的行数取得流量数据，必须要根据行首的关键字符串判断是否是无线还是有线
+#define  net_str	"wlp5s0"
+#define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT1/uevent"
 #define power_base  "POWER_SUPPLY_ENERGY_FULL="
@@ -62,6 +64,7 @@
 #endif
 /////////////////////////////////office pad//////////////////////////////////////
 #if (MCH_ID == 3) 
+#define  net_str	"wlp5s0"
 #define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT0/uevent"
@@ -80,7 +83,8 @@
 #endif
 /////////////////////////////////dell/////////////////////////////////////////////
 #if (MCH_ID == 2)
-#define	 jc			4
+#define  net_str	"wlp5s0"
+#define	 jc			5
 //电池电量获取所需
 #define sfile   ""
 //CPU

@@ -348,18 +348,21 @@ void get_net()
 		snprintf(msg[7],100,"00");
 		return ;
 	}
+	memset(ch,0,300);
 	for(i=0;i<jc;i++)
 	{
-		memset(ch,0,300);
 		fgets(ch,300,file);
+		if(memcmp(ch,net_str,strlen(net_str))==0)
+			break;
+		memset(ch,0,300);
 	}
 	fclose(file);c1=ch;k=0;
 	l=strlen(c1);
-	for(j=0;j<l;j++)
+	for(j=strlen(net_str);j<l;j++)
 	{
 		if(c1[j]>=0x30 && c1[j]<=0x39)
 		{
-			if(k==1)
+			if(k==0)
 			{
 				c2=c1+j;i=0;
 				while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -372,7 +375,7 @@ void get_net()
 			}
 			else
 			{
-				if(k==9)
+				if(k==8)
 				{
 					c2=c1+j;i=0;
 					while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -382,7 +385,7 @@ void get_net()
 					net_ud[1]=atoll(buf);
 					break;
 				}
-				if(k!=9)
+				else //if(k != 10)
 				{
 					c2=c1+j;i=0;
 					while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -406,18 +409,21 @@ void get_net()
 		snprintf(msg[7],100,"00");
 		return ;
 	}
+	memset(ch,0,300);
 	for(i=0;i<jc;i++)
 	{
-		memset(ch,0,300);
 		fgets(ch,300,file);
+		if(memcmp(ch,net_str,strlen(net_str))==0)
+			break;
+		memset(ch,0,300);
 	}
 	fclose(file);c1=ch;k=0;
 	l=strlen(c1);
-	for(j=0;j<l;j++)
+	for(j=strlen(net_str);j<l;j++)
 	{
 		if(c1[j]>=0x30 && c1[j]<=0x39)
 		{
-			if(k==1)
+			if(k==0)
 			{
 				c2=c1+j;i=0;
 				while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -430,7 +436,7 @@ void get_net()
 			}
 			else
 			{
-				if(k==9)
+				if(k==8)
 				{
 					c2=c1+j;i=0;
 					while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -440,7 +446,7 @@ void get_net()
 					m[1]=atoll(buf);
 					break;
 				}
-				if(k!=9)
+				else //if(k!=9)
 				{
 					c2=c1+j;i=0;
 					while(c2[i]>=0x30 && c2[i]<=0x39)
@@ -541,7 +547,8 @@ void check_mail()
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -555,13 +562,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//tybitsfox163	
 	file=fopen(tfox163,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -575,13 +584,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//tybitsfox126	
 	file=fopen(tfox126,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -595,13 +606,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//bitsfox126	
 	file=fopen(fox126,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -615,13 +628,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//13325288100
 	file=fopen(phone,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -635,13 +650,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//tybitsfoxsina	
 	file=fopen(tfoxsina,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -655,13 +672,15 @@ void check_mail()
 		}
 	}
 	zero(buf);
+//bitsfoxsina	
 	file=fopen(foxsina,"r");
 	if(file != NULL)
 	{
 		i=0;j=0;
 		while(fgets(buf,chlen,file))
 		{
-			if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			//if(memcmp(buf,fetchmail,strlen(fetchmail))==0)
+			if((buf[0] == 'F') && (buf[4] == ':'))
 				i++;
 			if(memcmp(buf,status,strlen(status))==0)
 				j++;
@@ -684,9 +703,3 @@ cm_end:
 	fclose(file);
 }
 //}}}
-
-
-
-
-
-
