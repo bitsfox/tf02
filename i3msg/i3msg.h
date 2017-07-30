@@ -16,7 +16,8 @@
   =2				dell
   =3				office pad
  */
-#define MCH_ID			1
+#define tfile		"/tmp/sysini_path0XAdb234WA99u.dtt"
+#define MCH_ID			2
 //通用的定义
 #define  chlen		1024
 #define  mem_len	256
@@ -58,9 +59,9 @@
 #define net_updown	"/proc/net/dev"
 //cpu temperature
 //#define cpu_temp	"/proc/acpi/ibm/thermal"
-#define cpu_temp	"/sys/class/hwmon/hwmon2/temp2_input"
+//#define cpu_temp	"/sys/class/hwmon/hwmon2/temp2_input"
 //video card temp
-#define video_temp	"/sys/class/hwmon/hwmon0/temp1_input"
+//#define video_temp	"/sys/class/hwmon/hwmon0/temp1_input"
 #endif
 /////////////////////////////////office pad//////////////////////////////////////
 #if (MCH_ID == 3) 
@@ -77,13 +78,13 @@
 //net
 #define net_updown	"/proc/net/dev"
 //cpu temperature
-#define cpu_temp "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+//#define cpu_temp "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
 //video card temp
-#define video_temp "/sys/devices/virtual/thermal/thermal_zone0/temp"
+//#define video_temp "/sys/devices/virtual/thermal/thermal_zone0/temp"
 #endif
 /////////////////////////////////dell/////////////////////////////////////////////
 #if (MCH_ID == 2)
-#define  net_str	"wlp5s0"
+#define  net_str	"enp3s0"
 #define	 jc			5
 //电池电量获取所需
 #define sfile   ""
@@ -94,14 +95,15 @@
 //net
 #define net_updown	"/proc/net/dev"
 //cpu temperature
-#define cpu_temp	"/sys/class/hwmon/hwmon0/temp2_input"
-#define video_temp	"/sys/class/hwmon/hwmon1/temp1_input"
+//#define cpu_temp	"/sys/class/hwmon/hwmon0/temp2_input"
+//#define video_temp	"/sys/class/hwmon/hwmon1/temp1_input"
 
 #endif
 //}}}
 //define var
 char msg[11][100];
 char fmt[chlen];
+char cpu_temp[chlen],video_temp[chlen];
 int  cpu_v[5]; //used to calc cpu avg
 unsigned long long 	net_ud[2]; //calc net flow
 void get_config();//因为没用配置文件，此函数改为初始化基本数据。

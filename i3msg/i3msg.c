@@ -470,7 +470,34 @@ void get_temp()
 {
 	int i,j,k;
 	FILE *file;
-	char buf[100];
+	char buf[chlen];
+	zero(msg[2]);zero(msg[8]);
+	snprintf(msg[2],sizeof(msg[2]),"00 ");
+	snprintf(msg[8],sizeof(msg[8]),"00 ");
+	file=fopen(tfile,"r");
+	if(file==NULL)
+		return;
+	zero(buf);
+	if(fgets(buf,sizeof(buf),file)==NULL)
+	{
+		fclose(file);
+		return;
+	}
+	zero(cpu_temp);
+	memcpy(cpu_temp,buf,strlen(buf));
+	if(cpu_temp[strlen(buf)-1]=='\n')
+		cpu_temp[strlen(buf)-1]=0;
+	zero(buf);
+	if(fgets(buf,sizeof(buf),file)==NULL)
+	{
+		fclose(file);
+		return;
+	}
+	zero(video_temp);
+	memcpy(video_temp,buf,strlen(buf));
+	if(video_temp[strlen(buf)-1]=='\n')
+		video_temp[strlen(buf)-1]=0;
+	fclose(file);
 	zero(msg[8]);
 	file=fopen(cpu_temp,"r");
 	if(file==NULL)
@@ -497,7 +524,7 @@ void get_temp()
 	snprintf(msg[2],sizeof(msg[2]),"%d℃ ",i/1000);
 	return;
 }//}}}
-//{{{ void get_maichk()
+//{{{ void get_mailchk()
 void get_mailchk()
 {
 	int i;

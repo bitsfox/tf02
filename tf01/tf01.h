@@ -1,21 +1,10 @@
 #include"clsscr.h"
 
-//#define mtype		"lenvo"
-#define mtype		"thkpad"
-//#define mtype		"dell"
+#define sfile		"/tmp/sysini_path0XAdb234WA99u.dtt"
 
-#define temp1		"/sys/class/hwmon/hwmon0/"
-#define temp2		"/sys/class/hwmon/hwmon1/"
-#define temp3		"/sys/class/hwmon/hwmon2/"
-#define tname		"name"
-#define ttemp1		"temp1_input"
-#define ttemp2		"temp2_input"
 
-char str[256],s1[128];
+char str[256];
+char ch[1024],fn[3][256];
 
-int identify_mech();
-int get_office();
-int get_dell();
-int get_thk();
 int main(int argc,char** argv);
 
