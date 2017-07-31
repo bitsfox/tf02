@@ -18,7 +18,7 @@
 #define fan2		"fan2_input"
 #define fan3		"fan3_input"
 #define name		"name"					//注意，在查看thinkpad机器的信息时，该文件同样可能不存在
-#define dname		"device"				//如果上述name文件不存在，应该在这里查找
+#define dname		"device/"				//如果上述name文件不存在，应该在这里查找
 
 #define cpu			"coretemp"
 #define dell_vc		"nouveau"				//vc:video card
