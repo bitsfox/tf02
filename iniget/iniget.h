@@ -25,12 +25,13 @@
 #define thk_vc		"acpitz"
 #define dell_fan	"dell_smm"
 #define thk_fan		"thinkpad"
-#define len_vc		"nouveau"
-#define len_fan		"lenovo"
+#define len_vc		"acpitz"
+#define len_fan		"nouveau"				//在debian9下这个机器没有fan,不过有个被我屏蔽的独立显卡
 
 #define dmi			"dmidecode -t 1|grep Product"
 #define dell		"Inspiron 560s"
 #define thinkpad	"28425AC"
+//#define lenovo		"HuronRiver Platform"
 
 #define zero(A)		memset(A,0,sizeof(A))
 
