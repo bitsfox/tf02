@@ -119,7 +119,7 @@ int geturl()
 	FILE *f;
 	memset(ch,0,sizeof(ch));
 	memset(uname,0,sizeof(uname));
-	f=fopen("/root/.config/conky/weather.rc","r");//打开资源文件，读取url
+	f=fopen("/home/tian/.config/conky/weather.rc","r");//打开资源文件，读取url
 	if(f==NULL)
 	{
 		printf("open rcfile error\n");
@@ -188,7 +188,7 @@ int analy()
 	int  n[dnum];
 	char ch[512],*p;
 	int f,sf,i,j,k,l;
-	fp=fopen("/root/.config/conky/weather.rc","r");
+	fp=fopen("/home/tian/.config/conky/weather.rc","r");
 	if(fp==NULL)
 	{
 		printf("open rc error\n");
