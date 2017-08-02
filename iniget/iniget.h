@@ -18,19 +18,20 @@
 #define fan2		"fan2_input"
 #define fan3		"fan3_input"
 #define name		"name"					//注意，在查看thinkpad机器的信息时，该文件同样可能不存在
-#define dname		"device"				//如果上述name文件不存在，应该在这里查找
+#define dname		"device/"				//如果上述name文件不存在，应该在这里查找
 
 #define cpu			"coretemp"
 #define dell_vc		"nouveau"				//vc:video card
 #define thk_vc		"acpitz"
 #define dell_fan	"dell_smm"
 #define thk_fan		"thinkpad"
-#define len_vc		"nouveau"
-#define len_fan		"lenovo"
+#define len_vc		"acpitz"
+#define len_fan		"nouveau"				//在debian9下这个机器没有fan,不过有个被我屏蔽的独立显卡
 
 #define dmi			"dmidecode -t 1|grep Product"
 #define dell		"Inspiron 560s"
 #define thinkpad	"28425AC"
+//#define lenovo		"HuronRiver Platform"
 
 #define zero(A)		memset(A,0,sizeof(A))
 

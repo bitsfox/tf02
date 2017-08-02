@@ -17,7 +17,7 @@
   =3				office pad
  */
 #define tfile		"/tmp/sysini_path0XAdb234WA99u.dtt"
-#define MCH_ID			2
+#define MCH_ID			3
 //通用的定义
 #define  chlen		1024
 #define  mem_len	256
@@ -65,7 +65,7 @@
 #endif
 /////////////////////////////////office pad//////////////////////////////////////
 #if (MCH_ID == 3) 
-#define  net_str	"wlp5s0"
+#define  net_str	"enp4s0"
 #define	 jc			5
 //电池电量
 #define sfile   "/sys/class/power_supply/BAT0/uevent"
